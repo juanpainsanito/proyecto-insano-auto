@@ -36,23 +36,29 @@ function izquierda () {
     ContinuousServo.spin_one_way_with_speed(AnalogPin.P2, 0)
     ContinuousServo.spin_other_way_with_speed(AnalogPin.P1, 100)
 }
+let establecer = 0
 let comando = 0
 radio.setGroup(8)
 basic.showIcon(IconNames.Heart)
 basic.forever(function () {
     if (input.isGesture(Gesture.TiltLeft)) {
+        establecer += 1
         radio.sendNumber(1)
     }
     if (input.isGesture(Gesture.TiltRight)) {
+        establecer += 1
         radio.sendNumber(2)
     }
     if (input.buttonIsPressed(Button.A)) {
+        establecer += 1
         radio.sendNumber(2)
     }
     if (input.isGesture(Gesture.Shake)) {
+        establecer += 1
         radio.sendNumber(4)
     }
     if (input.buttonIsPressed(Button.B)) {
+        establecer += 1
         radio.sendNumber(5)
     }
 })
